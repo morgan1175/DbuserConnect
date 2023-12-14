@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>User Page</title>
+</head>
+<body>
+    <h1>Welcome to the USERS Page!</h1>
+    <p>Restricted access for users.</p>
+    <a th:href="@{/home}">HOME</a>
+    <a th:href="@{/user/liste}">USERS LIST</a>
+    <form th:action="@{/logout}" method="post">
+        <button type="submit">DECONNEXION</button>
+    </form>
+</body>
+</html>

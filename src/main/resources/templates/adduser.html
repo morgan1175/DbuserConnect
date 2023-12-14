@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>add</title>
+</head>
+<body>
+    <h1>ADD USER</h1>
+    <div>
+        <form th:action="@{/admin/adduser}" method="post" th:object="${user}">
+        
+            <input type="text" name="userid" id="userid" th:value="${user.id}" hidden>
+
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" th:value="${user.username}" >
+
+            <label for="password">Password</label>
+            <input type="text" name="password" id="password" th:value="${user.password}" >
+                    
+            <label for="roles">Roles</label>
+            <select name="roles" id="roles" multiple>
+                <option th:each="role : ${roles}" th:value="${role.libelle}"></option>
+            </select>
+        </form>
+    </div>
+    <div><a th:href="@{/home}">HOME</a></div>
+</body>
+</html>
