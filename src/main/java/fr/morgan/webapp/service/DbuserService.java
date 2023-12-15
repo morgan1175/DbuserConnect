@@ -10,6 +10,7 @@ import fr.morgan.webapp.entity.Dbuser;
 public interface DbuserService {
 
 	List<Dbuser> getUsers();
+	List<Dbuser> filterUserByUsername(String username);
 	Dbuser getUser(Long id);
 	Dbuser addUser(Dbuser user);
 	void deleteUser(Dbuser user);

@@ -21,8 +21,8 @@ public class DbuserServiceImp implements DbuserService{
 	private DbuserRepository dbuserRepository;
 	
 	@Autowired
-	private AuthenticationFacade authenticationFacade;
-	
+	AuthenticationFacade authenticationFacade;
+			
 	@Override
 	public Dbuser findByName(String username) {
 		return dbuserRepository.findByUsername(username);
@@ -78,6 +78,8 @@ public class DbuserServiceImp implements DbuserService{
 		return redirectionUrl;
 	}
 
-	
-
+	@Override
+	public List<Dbuser> filterUserByUsername(String username) {
+		return dbuserRepository.findByUsernameContainingIgnoreCase(username);
+	}
 }

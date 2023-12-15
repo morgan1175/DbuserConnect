@@ -3,31 +3,47 @@
 <head>
     <meta charset="UTF-8"/>
     <title>users</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="/js/filter.js"></script>
 </head>
 <body>
-    <h1>USERS LIST</h1>
+    <h2>Recherche</h2>
+        <label for="filterUsername">Chercher par nom d'utilisateur :</label>
+        <input type="text" id="filterUsername" />
+    
+    <button onclick="filterUsers()">Filtrer</button>
+
+    <h2>USERS LIST</h2>
     <div>
         <table>
             <thead>
                 <tr>
-                    <th>Id</th>
+                    <th hidden>Id</th>
                     <th>UserName</th>
                     <th>Role</th>
                  </tr>
             </thead>
             <tbody>
                 <tr th:each="user : ${liste}">
-                    <td th:text="${user.id}"></td>
+                    <td th:text="${user.id}" hidden></td>
                     <td th:text="${user.username}"></td>
                     <td>
                         <ul>
                             <li th:each="role : ${user.roles}" th:text="${role.libelle}"></li>
                         </ul>
                     </td>
+                    <td>
+                        <button th:if="${#authorization.expression('hasRole(''ADMIN'')')}" th:href="@{'/admin/modifyrole/' +${user.id}}">modify role</button>
+                    </td>
+                    <td>
+                        <button th:if="${#authorization.expression('hasRole(''ADMIN'')')}" th:href="@{'/admin/modifyuser/' +${user.id}}">modify user</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
     </div>
     <div><a th:href="@{/home}">HOME</a></div>
+    
+
 </body>
 </html>

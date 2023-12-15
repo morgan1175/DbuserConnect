@@ -15,12 +15,16 @@
             <input type="text" name="username" id="username" th:value="${user.username}" >
 
             <label for="password">Password</label>
-            <input type="text" name="password" id="password" th:value="${user.password}" >
+            <input type="password" name="password" id="password" th:value="${user.password}" >
                     
-            <label for="roles">Roles</label>
+            <!-- <label for="roles">Roles</label>
             <select name="roles" id="roles" multiple>
-                <option th:each="role : ${roles}" th:value="${role.libelle}"></option>
+                <option th:each="role : ${roles}" th:value="${role.libelle}" th:text="${role.libelle}"></option>
             </select>
+            <div th:each="role : ${roles}">
+                <input type="hidden" name="id" th:value="${role.id}">
+            </div> -->
+            <button type="submit">VALIDER</button>
         </form>
     </div>
     <div><a th:href="@{/home}">HOME</a></div>
