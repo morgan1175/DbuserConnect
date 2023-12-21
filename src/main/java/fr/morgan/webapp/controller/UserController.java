@@ -34,4 +34,6 @@ public class UserController {
 		model.addAttribute("liste", filteredUsers);
 		return "users";
 	}
+	
+	
 }

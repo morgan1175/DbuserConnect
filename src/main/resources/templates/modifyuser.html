@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>modify</title>
+</head>
+<body>
+    <h1>MODIFY USER</h1>
+    <div>
+        <form th:action="@{/admin/modifyuser/{id}(id=${user.id})}" method="post" th:object="${user}">
+        
+            <input type="text" name="userid" id="userid" th:value="${user.id}" hidden>
+
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" th:value="${user.username}" >
+
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" th:value="${user.password}" >
+
+            <!-- <label for="roles">Roles:</label>
+            <div th:each="role : ${allRoles}">
+                <input type="checkbox"  th:value="${role.libelle}" th:checked="${user.roles.contains(role)}" disabled/>
+                <span th:text="${role.libelle}"></span>
+            </div> -->
+             
+            <div>
+                <label for="roles">Role(s)</label>
+            <ul>
+                <li id="role" th:each="role : ${user.roles}" th:text="${role.libelle}"></li>
+            </ul>
+            </div>
+            
+            
+            
+            <!-- <select name="roles" id="roles" multiple="multiple">
+                <option th:each="role : ${user.roles}" th:value="${role}" th:text="${role.libelle}"></option>
+            </select> -->
+            
+            <button type="submit">MODIFIER</button>
+        </form>
+    </div>
+    <div><a th:href="@{/user/liste}">RETOUR</a></div>
+</body>
+</html>

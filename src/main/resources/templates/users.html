@@ -7,13 +7,16 @@
     <script src="/js/filter.js"></script>
 </head>
 <body>
-    <h2>Recherche</h2>
+    <h2>USERS LIST</h2>
+    <hr>
+    <div>
+        <h2>Recherche</h2>
         <label for="filterUsername">Chercher par nom d'utilisateur :</label>
         <input type="text" id="filterUsername" />
     
     <button onclick="filterUsers()">Filtrer</button>
-
-    <h2>USERS LIST</h2>
+    </div>
+    <hr>
     <div>
         <table>
             <thead>
@@ -33,15 +36,18 @@
                         </ul>
                     </td>
                     <td>
-                        <button th:if="${#authorization.expression('hasRole(''ADMIN'')')}" th:href="@{'/admin/modifyrole/' +${user.id}}">modify role</button>
+                        <a th:if="${#authorization.expression('hasRole(''ADMIN'')')}" th:href="@{/admin/modifyrole/{id}(id=${user.id})}">modify role</a>
                     </td>
+                    
                     <td>
-                        <button th:if="${#authorization.expression('hasRole(''ADMIN'')')}" th:href="@{'/admin/modifyuser/' +${user.id}}">modify user</button>
+                        <a type="button" th:if="${#authorization.expression('hasRole(''ADMIN'')')}" th:href="@{/admin/modifyuser/{id}(id=${user.id})}">modify user</a>
                     </td>
+                   
                 </tr>
             </tbody>
         </table>
     </div>
+    <hr>
     <div><a th:href="@{/home}">HOME</a></div>
     
 

@@ -1,7 +1,6 @@
 package fr.morgan.webapp.entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -19,6 +18,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+//@Getter
+//@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -36,11 +37,20 @@ public class Dbuser implements Serializable {
 	@JoinTable(name = "dbuser_role", joinColumns = @JoinColumn(name = "dbuser_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private List<Role> roles;
 
-	public Dbuser(String username, String password, String role) {
+
+	public Dbuser(String username, String password, List<Role> roles) {
 		super();
 		this.username = username;
 		this.password = password;
-
+		this.roles = roles;
 	}
+
+
+//	@Override
+//	public String toString() {
+//		return "Dbuser [id=" + id + ", username=" + username + ", password=" + password + ", roles=" + roles + "]";
+//	}
+	
+	
 
 }

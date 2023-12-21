@@ -14,10 +14,12 @@ public class RoleServiceImp implements RoleService {
 
 	@Autowired
 	private RoleRepository roleRepository;
+	
 	@Override
 	public List<Role> getRoles() {
 		return roleRepository.findAll();
 	}
+	
 	@Override
 	public List<Role> getDefaultRoles() {
 		List<Role> defaultRoles= new ArrayList<Role>();
@@ -25,5 +27,10 @@ public class RoleServiceImp implements RoleService {
 		defaultRoles.add(defaultRole);
 		return defaultRoles;
 	}
-
+	
+	@Override
+	public Role getRole(String libelle) {
+		return roleRepository.findByLibelle(libelle);
+	}
+		
 }

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import fr.morgan.webapp.config.AuthenticationFacade;
 import fr.morgan.webapp.entity.Dbuser;
+import fr.morgan.webapp.entity.Role;
 import fr.morgan.webapp.repository.DbuserRepository;
 
 @Service
@@ -81,5 +82,17 @@ public class DbuserServiceImp implements DbuserService{
 	@Override
 	public List<Dbuser> filterUserByUsername(String username) {
 		return dbuserRepository.findByUsernameContainingIgnoreCase(username);
+	}
+
+	@Override
+	public List<Role> getUserRoles(Long id) {
+		Dbuser user=dbuserRepository.findById(id).get();
+		return user.getRoles();
+	}
+
+	@Override
+	public String findPwdById(Long id) {
+		Dbuser user=dbuserRepository.findById(id).get();
+		return user.getPassword();
 	}
 }

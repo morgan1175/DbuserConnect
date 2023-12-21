@@ -6,6 +6,7 @@
 </head>
 <body>
     <h1>Welcome to the Home Page!</h1>
+    <hr>
     <p>Feel free to explore.</p>
     <div><a th:href="@{/admin}">ADMIN</a>
         <a th:href="@{/user}">USER</a>
@@ -14,7 +15,7 @@
     <div><a th:href="@{/user/liste}">USERS LIST</a></div>
     <br>
     <div><a th:href="@{/admin/adduser}">ADD USER</a></div>
-    <br><br>
+    <br><hr>
     <form th:action="@{/logout}" method="post">
         <button type="submit">DECONNEXION</button>
     </form>

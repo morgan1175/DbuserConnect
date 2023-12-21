@@ -11,5 +11,8 @@ public interface RoleService {
 
 	List<Role> getRoles();
 	List<Role> getDefaultRoles();
+	Role getRole(String libelle);
+	
+	
 	
 }
